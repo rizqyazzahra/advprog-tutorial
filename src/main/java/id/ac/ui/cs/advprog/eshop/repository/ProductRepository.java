@@ -17,30 +17,33 @@ public class ProductRepository {
         return product;
     }
 
-    public Product edit(Product editProduct){
-        int productId = Integer.parseInt(editProduct.getProductId());
-        Product product = findProductById(productId);
+    public Product edit(String productId, Product newProduct){
+        Product targetProduct = findProductById(productId);
 
-        String productName = editProduct.getProductName();
-        int productQuantity = editProduct.getProductQuantity();
+        if (targetProduct != null) {
+            targetProduct.setProductName(newProduct.getProductName());
+            targetProduct.setProductQuantity(newProduct.getProductQuantity());
+        }
 
-        product.setProductName(productName);
-        product.setProductQuantity(productQuantity);
-        return product;
+        return targetProduct;
     }
 
-    public void delete(Product deleteProduct){
-        productData.remove(deleteProduct);
+//    public void delete(Product deleteProduct){
+//        productData.remove(deleteProduct);
+//    }
+//
+//    public void deleteProductById(String deleteId){
+//        delete(findProductById(deleteId));
+//    }
+
+    public void delete(String productId) {
+        Product productToDelete = findProductById(productId);
+        productData.remove(productToDelete);
     }
 
-    public void deleteProductById(int deleteId){
-        delete(findProductById(deleteId));
-    }
-
-    public Product findProductById(int productId) {
+    public Product findProductById(String productId) {
         for(Product currentProduct : productData){
-            int currentProductID = Integer.parseInt(currentProduct.getProductId());
-            if(currentProductID == productId){
+            if(currentProduct.getProductId().equals(productId)){
                 return currentProduct;
             }
         }

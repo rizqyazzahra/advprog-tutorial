@@ -22,17 +22,18 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
-    public Product getProductByID(int productId) {
+    public Product getProductById(String productId) {
         return productRepository.findProductById(productId);
     }
 
-    public void edit(Product product){
-        productRepository.edit(product);
+    public Product edit(String productId, Product newProduct){
+        productRepository.edit(productId, newProduct);
+        return newProduct;
     }
 
     @Override
-    public void deleteProductById(int productId) {
-        productRepository.deleteProductById(productId);
+    public void deleteProductById(String productId) {
+        productRepository.delete(productId);
     }
 
     @Override
