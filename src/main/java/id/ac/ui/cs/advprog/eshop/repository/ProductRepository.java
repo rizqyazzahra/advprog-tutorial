@@ -17,39 +17,34 @@ public class ProductRepository {
         return product;
     }
 
-    public Product edit(Product product){
+    public Product edit(Product editProduct){
+        int productId = Integer.parseInt(editProduct.getProductId());
+        Product product = findProductById(productId);
+
+        String productName = editProduct.getProductName();
+        int productQuantity = editProduct.getProductQuantity();
+
+        product.setProductName(productName);
+        product.setProductQuantity(productQuantity);
+        return product;
+    }
+
+    public void delete(Product deleteProduct){
+        productData.remove(deleteProduct);
+    }
+
+    public void deleteProductById(int deleteId){
+        delete(findProductById(deleteId));
+    }
+
+    public Product findProductById(int productId) {
         for(Product currentProduct : productData){
             int currentProductID = Integer.parseInt(currentProduct.getProductId());
-            int productID = Integer.parseInt(product.getProductId());
-            String productName = product.getProductName();
-            int productQuantity = product.getProductQuantity();
-
-            if(currentProductID == productID){
-                currentProduct.setProductName(productName);
-                currentProduct.setProductQuantity(productQuantity);
+            if(currentProductID == productId){
                 return currentProduct;
             }
         }
         return null;
-    }
-
-    public void delete(int productId){
-        productData.remove(productId);
-    }
-
-    public void delete(Product product){
-        productData.remove(product);
-    }
-
-    public void deleteProductById(int productId){
-        for(Product willBeDeletedProduct : productData){
-            int willBeDeletedProductId = Integer.parseInt(willBeDeletedProduct.getProductId());
-
-            if(willBeDeletedProductId == productId){
-                delete(willBeDeletedProduct);
-                break;
-            }
-        }
     }
 
     public Iterator<Product> findAll() {
