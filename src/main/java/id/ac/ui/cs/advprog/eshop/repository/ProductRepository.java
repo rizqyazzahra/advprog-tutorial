@@ -33,6 +33,25 @@ public class ProductRepository {
         return null;
     }
 
+    public void delete(int productId){
+        productData.remove(productId);
+    }
+
+    public void delete(Product product){
+        productData.remove(product);
+    }
+
+    public void deleteProductById(int productId){
+        for(Product willBeDeletedProduct : productData){
+            int willBeDeletedProductId = Integer.parseInt(willBeDeletedProduct.getProductId());
+
+            if(willBeDeletedProductId == productId){
+                delete(willBeDeletedProduct);
+                break;
+            }
+        }
+    }
+
     public Iterator<Product> findAll() {
         return productData.iterator();
     }
