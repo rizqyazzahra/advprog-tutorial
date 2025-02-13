@@ -41,7 +41,7 @@ public class ProductController {
         int productID = Integer.parseInt(productId);
         Product product = service.getProductByID(productID);
         model.addAttribute("product", product);
-        return "editProduct";
+        return "EditProduct";
     }
 
     @PostMapping("/edit/{id}")
