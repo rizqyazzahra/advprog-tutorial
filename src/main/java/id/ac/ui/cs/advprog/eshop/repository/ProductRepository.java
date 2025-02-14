@@ -28,14 +28,6 @@ public class ProductRepository {
         return targetProduct;
     }
 
-//    public void delete(Product deleteProduct){
-//        productData.remove(deleteProduct);
-//    }
-//
-//    public void deleteProductById(String deleteId){
-//        delete(findProductById(deleteId));
-//    }
-
     public void delete(String productId) {
         Product productToDelete = findProductById(productId);
         productData.remove(productToDelete);
