@@ -10,10 +10,11 @@ Kelas: B
 _Clean code principles_ dan _secure coding_ practices yang saya terapkan antara lain:
 * **Pemberian nama yang bermakna**: Saya menggunakan nama yang jelas dan deskriptif untuk penamaan class, method, dan variable. Penamaan ini mempermudah untuk memahami kode. Sebagai contoh, method seperti `findProductById` dan `deleteProductPage`, serta nama kelas seperti `ProductController`, `ProductService`, atau `ProductRepository`. 
 * **Menghindari pengulangan kode**: Saya mengimplementasikan method `findProductById` yang dapat digunakan baik untuk edit dan delete produk, sehingga tidak terdapat duplikasi kode 
-* **Penggunaan method yang efisien**: Setiap method yang ada dipastikan memiliki satu tujuan utama, yang tercermin dari nama metodenya, seperti create, edit, dan delete 
+* **Penggunaan method yang efisien**: Setiap method yang ada dipastikan memiliki satu tujuan utama, yang tercermin dari nama metodenya, seperti create, edit, dan delete
+* **Penggunaan UUID**: Menggunakan UUID sebagai ID produk untuk mencegah percobaan akses berulang dan menghindari ID yang mudah diprediksi, sehingga meningkatkan keamanan sistem.
 
 ## Reflection 2
-1. Unit Test
+### 1. Unit Test
 
 Setelah menulis unit test, saya merasa bahwa unit test sangat membantu dalam memastikan kode berjalan sesuai dengan yang diharapkan. Unit test dapat membantu saya dalam mendeteksi potensi kesalahan tanpa harus menjalankan berulang kali keseluruhan program secara manual.
 
@@ -21,7 +22,7 @@ Jumlah unit test dalam suatu class tergantung pada kompleksitas dan jumlah fungs
 
 Untuk memastikan bahwa unit test yang dibuat sudah cukup, kita dapat menggunakan metrik _code coverage_. _Code coverage_ ini akan mengukur sejauh mana source code diuji oleh unit test. Namun, mencapai _code coverage_ 100% tidak selalu berarti bahwa kode bebas dari bug atau _error_. Unit test hanya menguji skenario yang telah diprediksi, tetapi tidak dapat sepenuhnya menjamin tidak ada bug tersembunyi atau _error_ yang muncul akibat kombinasi kondisi yang tidak diuji. Maka dari itu, tetap memerlukan praktik test lain, seperti _integration testing_, _manual testing_, dan _code review_ untuk memastikan kualitas perangkat lunak secara keseluruhan.
 
-2. Functional Test
+### 2. Functional Test
 
 Membuat kelas functional test baru untuk verifikasi jumlah item dalam daftar produk dengan prosedur setup dan variabel instan yang sama seperti `CreateProductFunctionalTest.java` dapat berdampak pada kebersihan kode karena berpotensi menyebabkan duplikasi kode, yang membuatnya lebih sulit untuk dipelihara dan diperbarui. Duplikasi ini melanggar prinsip DRY (Don't Repeat Yourself) karena duplikasi kode yang fungsinya sama. Selain itu, jika ada banyak kelas pengujian dengan logika setup yang sama, maka perubahan di satu tempat harus diperbarui di banyak lokasi secara manual, meningkatkan risiko tidak konsisten.
 
