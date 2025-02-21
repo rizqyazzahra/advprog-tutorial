@@ -110,7 +110,6 @@ class ProductRepositoryTest {
         Product firstUpdate = new Product();
         firstUpdate.setProductName("Sampo Cap Beni");
         firstUpdate.setProductQuantity(150);
-        Product firstEdit = productRepository.edit(product.getProductId(), firstUpdate);
 
         Product secondUpdate = new Product();
         secondUpdate.setProductName("Sampo Cap Doni");
