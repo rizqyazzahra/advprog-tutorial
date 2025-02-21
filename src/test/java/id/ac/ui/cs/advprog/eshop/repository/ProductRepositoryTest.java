@@ -19,6 +19,8 @@ class ProductRepositoryTest {
     ProductRepository productRepository;
     @BeforeEach
     void setUp() {
+        // This method is intentionally left empty
+        // It will be implemented in a subclass or used as a placeholder for future setup logic
     }
 
     @Test
