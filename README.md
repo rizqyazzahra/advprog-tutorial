@@ -6,7 +6,9 @@ NPM: 2306244936
 
 Kelas: B
 
-🔗 Deployment: [E-Shop](embarrassed-perle-rizqyazzahra-c19841c3.koyeb.app/)
+🔗 Deployment: [E-Shop](https://embarrassed-perle-rizqyazzahra-c19841c3.koyeb.app/)
+
+---
 
 <details>
 <summary>Module 1</summary>
@@ -47,6 +49,7 @@ Untuk menjaga kebersihan kode, ada beberapa pendekatan yang dapat diterapkan. Sa
      - Method `setUp()` pada `ProductRepositoryTest.java` awalnya kosong tanpa komentar atau implementasi, sehingga bisa membingungkan. Saya memperbaikinya dengan menambahkan komentar yang menjelaskan bahwa method ini disiapkan untuk pengaturan awal jika diperlukan nantinya.
      - Method `contextLoads` pada `EshopApplicationTests.java` yang memang sengaja kosong. Saya menambahkan komentar yang menjelaskan bahwa metode ini dibiarkan kosong karena tujuan utamanya hanya untuk memastikan konteks aplikasi dapat dimuat tanpa kesalahan.
 
-2. Continuous Integration and Continuous Deployment
+2. **Continuous Integration and Continuous Deployment**
+   
    Menurut saya, implementasi yang saya lakukan ini telah memenuhi prinsip _Continuous Integration_ dan _Continuous Deployment_. CI terpenuhi dengan saya menggunakan Github Actions untuk menjalankan beberapa _workflow_, seperti `ci.yml`, `sonarcloud.yml`, dan `scorecard.yml`. `ci.yml` secara otomatis akan menjalankan seluruh _test_ yang sudah saya buat setiap kali ada perubahan kode (_push_ atau _pull request_), `scorecard.yml` akan menjalankan OpenSSF Scorecard untuk mengevaluasi keamanan, dan `sonarcloud.yml` yang akan menganalisis kualitas kode dengan SonarCloud. Sementara untuk CD, diterapkan melalui PaaS Koyeb. Setiap setelah perubahan kode melewati tahap CI, akan langsung di-_deploy_ tanpa langkah manual tambahan.
 </details>
