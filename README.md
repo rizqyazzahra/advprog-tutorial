@@ -53,3 +53,35 @@ Untuk menjaga kebersihan kode, ada beberapa pendekatan yang dapat diterapkan. Sa
    
    Menurut saya, implementasi yang saya lakukan ini telah memenuhi prinsip _Continuous Integration_ dan _Continuous Deployment_. CI terpenuhi dengan saya menggunakan Github Actions untuk menjalankan beberapa _workflow_, seperti `ci.yml`, `sonarcloud.yml`, dan `scorecard.yml`. `ci.yml` secara otomatis akan menjalankan seluruh _test_ yang sudah saya buat setiap kali ada perubahan kode (_push_ atau _pull request_), `scorecard.yml` akan menjalankan OpenSSF Scorecard untuk mengevaluasi keamanan, dan `sonarcloud.yml` yang akan menganalisis kualitas kode dengan SonarCloud. Sementara untuk CD, diterapkan melalui PaaS Koyeb. Setiap setelah perubahan kode melewati tahap CI, akan langsung di-_deploy_ tanpa langkah manual tambahan.
 </details>
+
+<details>
+<summary>Module 3</summary>
+
+## Reflection
+
+1. **Principles Applied to the Project**
+    * Single Responsibility Principle (SRP)
+
+      Saya memisahkan `ProductController` dan `CarController` agar masing-masing class hanya memiliki satu tanggung jawab.
+    * Open/Closed Principle (OCP)
+
+      Sudah memenuhi OCP karena apabila kedepannya terdapat implementasi baru, dapat dilakukan tanpa perlu mengubah kode yang sudah ada yang bergantung pada interface.
+    * Liskov Substitution Principle (LSP)
+
+      Pada before-solid, `CarController` mewarisi `ProductController` padahal memiliki perilaku yang berbeda. Hal ini melanggar LSP karena objek subclass (`CarController`) tidak bisa menggantikan superclass-nya (`ProductController`) tanpa mengubah perilakunya. Maka dari itu, saya memperbaikinya dengan menghapus _extends_ `ProductController` pada `CarController`.
+    * Interface Segregation Principle (ISP)
+
+      Sudah diterapkan pada interface yang ada, yaitu `CarService` dan `ProductService` karena keduanya  hanya berisi _method_ yang relevan dengan masing-masing model.
+    * Dependency Inversion Principle (DIP)
+
+      Sebelumnya, `CarController` bergantung langsung pada implementasi konkret (`CarServiceImpl`). Hal ini melanggar prinsip DI karena high-level class (`CarController`) tidak seharusnya bergantung pada low-level class(`CarServiceImpl`). Saya memperbaikinya dengan mengganti _data type_ `carService`menjadi `CarService` yang merupakan interface.
+
+2. **Advantages of Applying SOLID**
+
+   Menerapkan prinsip SOLID memberikan banyak keuntungan, yang dapat meningkatkan kualitas, fleksibilitas, dan pemeliharaan kode dalam proyek. Misalnya, dengan menerapkan SRP, setiap kelas hanya memiliki satu tugas utama sehingga kode lebih terorganisir dan lebih mudah dipahami. Dengan OCP, kita dapat menambah fungsionalitas sistem tanpa mengubah kode yang ada. Lalu, penerapan LSP memungkinkan kita mengganti superclass dengan subclass tanpa menyebabkan error. ISP memisahkan antarmuka sesuai kebutuhan klien, menghindari ketergantungan pada method yang tidak diperlukan. Terakhir, DIP membuat kode kita menjadi lebih fleksibel terhadap perubahan. Contoh penerapannya telah dijelaskan pada nomor 1.
+
+
+3. **Disadvantages of Not Applying SOLID**
+
+   Tidak menerapkan prinsip SOLID dapat menyebabkan kode mejadi sulit dipahami, diperbaiki, dan dikembangkan. Tanpa SRP, kelas akan memiliki banyak tanggung jawab, membuat kode lebih kompleks dan sulit dipahami serta mempersulit pemeliharaan. Tanpa OCP, menambahkan fungsionalitas baru akan memerlukan perubahan langsung pada kode yang ada, hal ini dapat meningkatkan risiko bug. LSP yang tidak diterapkan bisa mengakibatkan kesulitan dalam mengganti kelas turunan tanpa merusak fungsionalitas, karena kelas turunan mungkin tidak memenuhi kontrak yang dibutuhkan. Sebagai contoh, jika `CarController` menjadi subclass dari `ProductController`, `CarController` akan mewarisi method yang sebenarnya tidak dibutuhkan. Hal ini dapat meningkatkan risiko error. Tanpa ISP, kode menjadi tidak efisien karena mengimplementasikan method yang tidak diperlukan. Terakhir, tanpa DIP, ketergantungan pada implementasi konkret akan membuat kode lebih sulit diganti dan diuji, karena penggantian ketergantungan atau pengujian unit akan menjadi lebih rumit.
+</details>
