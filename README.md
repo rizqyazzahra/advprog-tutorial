@@ -85,3 +85,22 @@ Untuk menjaga kebersihan kode, ada beberapa pendekatan yang dapat diterapkan. Sa
 
    Tidak menerapkan prinsip SOLID dapat menyebabkan kode mejadi sulit dipahami, diperbaiki, dan dikembangkan. Tanpa SRP, kelas akan memiliki banyak tanggung jawab, membuat kode lebih kompleks dan sulit dipahami serta mempersulit pemeliharaan. Tanpa OCP, menambahkan fungsionalitas baru akan memerlukan perubahan langsung pada kode yang ada, hal ini dapat meningkatkan risiko bug. LSP yang tidak diterapkan bisa mengakibatkan kesulitan dalam mengganti kelas turunan tanpa merusak fungsionalitas, karena kelas turunan mungkin tidak memenuhi kontrak yang dibutuhkan. Sebagai contoh, jika `CarController` menjadi subclass dari `ProductController`, `CarController` akan mewarisi method yang sebenarnya tidak dibutuhkan. Hal ini dapat meningkatkan risiko error. Tanpa ISP, kode menjadi tidak efisien karena mengimplementasikan method yang tidak diperlukan. Terakhir, tanpa DIP, ketergantungan pada implementasi konkret akan membuat kode lebih sulit diganti dan diuji, karena penggantian ketergantungan atau pengujian unit akan menjadi lebih rumit.
 </details>
+
+<details>
+<summary>Module 4</summary>
+
+## Reflection
+
+1. > Reflect based on Percival (2017) proposed self-reflective questions (in “Principles and Best Practice of Testing” submodule, chapter “Evaluating Your Testing Objectives”), whether this TDD flow is useful enough for you or not. If not, explain things that you need to do next time you make more tests.
+
+   Menurut saya, Test-Driven Development (TDD) cukup bermanfaat untuk memastikan kode yang saya tulis sudah memenuhi kebutuhan yang diharapkan. Dengan menguji setiap fitur sebelum diimplementasikan, saya dapat menemukan kesalahan lebih cepat dan memperbaikinya sebelum menjadi masalah besar. Selain itu, TDD juga memudahkan proses refactoring tanpa takut merusak fungsionalitas yang sudah ada. Meskipun demikian, saya merasa masih belum terbiasa dalam menerapkan TDD dan terkadang kesulitan untuk membuat tes yang sesuai di awal _development_.
+
+2. > You have created unit tests in Tutorial. Now reflect whether your tests have successfully followed F.I.R.S.T. principle or not. If not, explain things that you need to do the next time you create more tests.
+
+   Menurut saya, _unit test_ yang dibuat telah mengikuti prinsip F.I.R.S.T. dengan cukup baik karena sudah memenuhi
+   * Fast: Berjalannya test sudah cukup cepat karena hanya menguji unit kecil.
+   * Independent: Sebagian besar test tidak bergantung pada test lain dan dapat dijalankan sendiri.
+   * Repeatable: Hasil test selalu sama ketika dijalankan di _environment_ manapun.
+   * Self-validating: Hasil test jelas antara gagal atau berhasil.
+   * Timely: Test sudah dibuat sebelum atau selama implementasi fitur.
+</details>
